@@ -39,7 +39,10 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    document.body.appendChild(renderer.domElement);
+
+    // Insert canvas at the beginning of game-container so UI overlays it
+    const gameContainer = document.getElementById('game-container');
+    gameContainer.insertBefore(renderer.domElement, gameContainer.firstChild);
 
     // Add lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
